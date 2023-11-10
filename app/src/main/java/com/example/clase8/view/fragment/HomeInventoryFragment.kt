@@ -14,8 +14,9 @@ import com.example.clase8.databinding.FragmentHomeInventoryBinding
 import com.example.clase8.model.Inventory
 import com.example.clase8.view.adapter.InventoryAdapter
 import com.example.clase8.viewmodel.InventoryViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeInventoryFragment : Fragment() {
     private lateinit var binding: FragmentHomeInventoryBinding
     private val inventoryViewModel: InventoryViewModel by viewModels()

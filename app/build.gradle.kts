@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id ("kotlin-kapt")
+    id ("com.google.dagger.hilt.android")
 }
 
 android {
@@ -55,6 +57,8 @@ dependencies {
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
     testImplementation ("androidx.arch.core:core-testing:2.2.0")
 
+    debugImplementation ("org.jacoco:org.jacoco.core:0.8.7")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
@@ -73,6 +77,8 @@ dependencies {
 
     //viewmodel
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation ("androidx.activity:activity-ktx:1.8.0")
+    implementation ("androidx.fragment:fragment-ktx:1.6.2")
 
     // LiveData
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
@@ -91,4 +97,9 @@ dependencies {
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.12.0")
 
+    //dagger hilt
+    implementation("com.google.dagger:hilt-android:2.47")
+    kapt("com.google.dagger:hilt-android-compiler:2.47")
+
 }
+

@@ -4,15 +4,20 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.clase8.model.Inventory
 import com.example.clase8.model.Product
 import com.example.clase8.repository.InventoryRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class InventoryViewModel(application: Application) : AndroidViewModel(application) {
-    val context = getApplication<Application>()
-    private val inventoryRepository = InventoryRepository(context)
+@HiltViewModel
+class InventoryViewModel @Inject constructor(
+    private val inventoryRepository: InventoryRepository
+): ViewModel(){
+
 
     private val _listInventory = MutableLiveData<MutableList<Inventory>>()
     val listInventory: LiveData<MutableList<Inventory>> get() = _listInventory
@@ -86,6 +91,11 @@ class InventoryViewModel(application: Application) : AndroidViewModel(applicatio
                 _progresState.value = false
             }
         }
+    }
+
+    fun totalProducto(price:Int, quantity:Int): Double{
+        val total = price * quantity
+        return total.toDouble()
     }
 }
 

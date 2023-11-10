@@ -12,8 +12,9 @@ import com.example.clase8.databinding.FragmentHomeInventoryBinding
 import com.example.clase8.databinding.FragmentItemDetailsBinding
 import com.example.clase8.model.Inventory
 import com.example.clase8.viewmodel.InventoryViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ItemDetailsFragment : Fragment() {
     private lateinit var binding: FragmentItemDetailsBinding
     private val inventoryViewModel: InventoryViewModel by viewModels()
@@ -46,12 +47,18 @@ class ItemDetailsFragment : Fragment() {
         }
     }
 
-    private fun dataInventory(){
+    private fun dataInventory() {
         val receivedBundle = arguments
         receivedInventory = receivedBundle?.getSerializable("clave") as Inventory
-        binding.tvItem.text ="${receivedInventory.name}"
+        binding.tvItem.text = "${receivedInventory.name}"
         binding.tvPrice.text = "$ ${receivedInventory.price}"
         binding.tvQuantity.text = "${receivedInventory.quantity}"
+        binding.txtTotal.text = "$ ${
+            inventoryViewModel.totalProducto(
+                receivedInventory.price,
+                receivedInventory.quantity
+            )
+        }"
     }
 
     private fun deleteInventory(){

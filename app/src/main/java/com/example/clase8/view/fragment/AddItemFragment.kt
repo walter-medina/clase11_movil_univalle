@@ -16,7 +16,9 @@ import com.example.clase8.databinding.FragmentAddItemBinding
 import com.example.clase8.model.Inventory
 import com.example.clase8.model.Product
 import com.example.clase8.viewmodel.InventoryViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddItemFragment : Fragment() {
 
     private lateinit var binding: FragmentAddItemBinding

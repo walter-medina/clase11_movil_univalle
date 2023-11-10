@@ -7,13 +7,16 @@ import com.example.clase8.model.Inventory
 import com.example.clase8.model.Product
 import com.example.clase8.webservice.ApiService
 import com.example.clase8.webservice.ApiUtils
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class InventoryRepository(val context: Context){
-    private var inventoryDao:InventoryDao = InventoryDB.getDatabase(context).inventoryDao()
-    private var apiService: ApiService = ApiUtils.getApiService()
-
+class InventoryRepository  @Inject constructor(
+    @ApplicationContext val context: Context,
+    private val inventoryDao: InventoryDao,
+    private val apiService: ApiService
+){
      suspend fun saveInventory(inventory:Inventory){
          withContext(Dispatchers.IO){
              inventoryDao.saveInventory(inventory)
