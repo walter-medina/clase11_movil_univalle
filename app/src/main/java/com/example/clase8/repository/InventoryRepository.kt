@@ -47,7 +47,7 @@ class InventoryRepository  @Inject constructor(
                 val response = apiService.getProducts()
                 response
             } catch (e: Exception) {
-                // Manejar el error
+
                 e.printStackTrace()
                 mutableListOf()
             }
