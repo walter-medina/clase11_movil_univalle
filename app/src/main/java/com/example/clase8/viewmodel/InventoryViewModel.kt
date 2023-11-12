@@ -1,7 +1,5 @@
 package com.example.clase8.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class InventoryViewModel @Inject constructor(
     private val inventoryRepository: InventoryRepository
-): ViewModel(){
+) : ViewModel() {
 
 
     private val _listInventory = MutableLiveData<MutableList<Inventory>>()
@@ -93,7 +91,7 @@ class InventoryViewModel @Inject constructor(
         }
     }
 
-    fun totalProducto(price:Int, quantity:Int): Double{
+    fun totalProducto(price: Int, quantity: Int): Double {
         val total = price * quantity
         return total.toDouble()
     }
