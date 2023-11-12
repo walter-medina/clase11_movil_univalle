@@ -13,7 +13,6 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class InventoryRepository  @Inject constructor(
-    @ApplicationContext val context: Context,
     private val inventoryDao: InventoryDao,
     private val apiService: ApiService
 ){

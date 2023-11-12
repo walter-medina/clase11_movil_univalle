@@ -20,7 +20,7 @@ object Module {
 
     @Singleton
     @Provides
-    fun provideContext(@ApplicationContext context: Context):InventoryDB{
+    fun provideInventoryDB(@ApplicationContext context: Context):InventoryDB{
         return InventoryDB.getDatabase(context)
     }
 
