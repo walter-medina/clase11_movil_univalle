@@ -81,7 +81,6 @@ class InventoryViewModelTest {
         // Asegurarse de que la LiveData de productos se haya actualizado correctamente
         //then
         assertEquals(inventoryViewModel.listProducts.value, mockProducts)
-// son utilizados para controlar y simular la ejecución de coroutines en el hilo principal durante las pruebas unitarias
     }
 
     @Test
