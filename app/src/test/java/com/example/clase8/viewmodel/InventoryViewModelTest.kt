@@ -50,6 +50,7 @@ class InventoryViewModelTest {
 
     @Test
     fun `test método totalProducto`(){
+        //Sacar las comillas invertidas en windows alt + 96
         //given (qué necesitamos:condiciones previas necesarias para que la prueba se ejecute correctamente)
         val price = 10
         val quantity = 5
@@ -81,7 +82,6 @@ class InventoryViewModelTest {
         //then
         assertEquals(inventoryViewModel.listProducts.value, mockProducts)
 // son utilizados para controlar y simular la ejecución de coroutines en el hilo principal durante las pruebas unitarias
-        Dispatchers.resetMain()
     }
 
     @Test
@@ -89,17 +89,11 @@ class InventoryViewModelTest {
         //given
         Dispatchers.setMain(UnconfinedTestDispatcher())
         val inventory= Inventory(id = 1, name = "Item1", price = 10, quantity = 5)
-        `when`(inventoryRepository.saveInventory(inventory))
-            .thenAnswer { invocation ->
-                val inventoryArgument = invocation.getArgument<Inventory>(0)//inventoryArgument contendrá el valor del primer argumento que se pasó al método
-                inventoryArgument
-            }
-
         // Llamamos al método que queremos probar
         inventoryViewModel.saveInventory(inventory)
 
-        // Verificamos que el estado de progreso sea falso después de la operación
+        // Verificamos que en verdad se está consumiendo
+        // la instrucción inventoryRepository.saveInventory(inventory) en el método testeado
         verify(inventoryRepository).saveInventory(inventory)
-        Dispatchers.resetMain()
     }
 }
