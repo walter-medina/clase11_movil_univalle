@@ -5,6 +5,7 @@ plugins {
     id ("kotlin-kapt")
     id ("com.google.dagger.hilt.android")
 }
+apply(from = rootProject.file("jacoco.gradle"))
 
 android {
     namespace = "com.example.clase8"
