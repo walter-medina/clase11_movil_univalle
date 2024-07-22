@@ -1,8 +1,10 @@
 package com.example.clase8.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.clase8.data.InventoryDB
 import com.example.clase8.data.InventoryDao
+import com.example.clase8.utils.Constants
 import com.example.clase8.utils.Constants.BASE_URL
 import com.example.clase8.webservice.ApiService
 import dagger.Module
@@ -21,7 +23,11 @@ object Module {
     @Singleton
     @Provides
     fun provideInventoryDB(@ApplicationContext context: Context):InventoryDB{
-        return InventoryDB.getDatabase(context)
+        return Room.databaseBuilder(
+            context,
+            InventoryDB::class.java,
+            Constants.NAME_BD
+        ).build()
     }
 
     @Singleton
