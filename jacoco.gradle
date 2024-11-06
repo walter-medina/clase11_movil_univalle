@@ -38,74 +38,14 @@ def setupAndroidReporting() {
         println("taskName: ${taskName}")
         //region filter
         def fileFilter = [
-                //region default devops
-                '*/**enumerable/**',
-                '**/**dto*',
-                '**/**Dto*',
-                '**/domain/*',
-                '**/**enum*',
-                '**/**Enum*',
-                '**/**enumerator/**',
-                '**/**entity/**',
-                '**/**DTO*',
-                '**/**Domain*',
-                'src/**/**Model.*',
-                '**/**Properties*',
-                '**/**Property*',
-                '**/**Entity*',
-                '**/**Entities*',
-                '**/**Config*',
-                '**/**Configuration*',
-                '**/**Application.*',
-                '**/**LoggerAspect.*',
-                '**/**Pointcut*',
-                '**/*Fragment.*',
-                '**/**Activity.*',
-                '**/**Adapter.*',
-                '**/**ViewPager.*',
-                '**/**ViewHolder.*',
-                '**/**Module.*',
-                '**/**Dialog.*',
-                '**/**Window.*',
-                '**/**Navigator.*',
-                '**/**DInformationHandler.*',
-                '**/**Fragment.*',
-                '**/**Activity.*',
-                '**/**Adapter.*',
-                '**/**Dialog.*',
-                '**/**ViewPager.*',
-                '**/**BaseAspect.*',
-                '**/dto/**',
-                '**/**environment*',
-                '**/**.xml',
-                '**/**App.*',
-                '**/**App.*',
-                '**/**GuardReaction.*',
-                '**/**MapHelper.*',
-                '**/**Preferences.*',
-                '**/**Service.*',
-                '**/**View.*',
-                '**/**EditText*.*',
-                '**/**AutoComplete*.*',
-                '**/**Button*.*',
-                '**/**CheckBox*.*',
-                '**/**RecyclerView*.*',
-                '**/**TextView*.*',
-                '**/**TextInput*.*',
-                '**/**Typeface*.*',
-                '**/**Constants.*',
-                '**/model/**Model.*',
-                '**/models/**Model.*',
-                '**/**ErrorHandler.*',
+                '**/di/**',
+                '**/view/**',
+                '**/data/**',
+                '**/model/**',
+                '**/utils/**',
+                '**/webservice/**',
+                '**/databinding/**',
                 //endregion
-                //pedir que excluyan
-                '**/databinding/**', //codigo generado por el proyecto de manera automatica,
-                '**/model/**/**Model.*', // se necesita de esta manera dado que se separaron por responsabilidades
-                '**/models/**/**Model.*', // se necesita de esta manera dado que se separaron por responsabilidades
-                '**/hilt_aggregated_deps/**', // paquete generado por dagger-hilt
-                '**/BuildConfig*.*', // paquete generado al momento de compilar el proyecto genera este archivo
-                '**/*Kt*', // generado por java para soporte de kotlin
-                '**/**.*new_Function*', // paquete generado al momento de compilar el proyecto genera este archivo
         ]
         //endregion
 
