@@ -6,6 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.clase8.model.Inventory
+import javax.inject.Inject
 
 @Dao
 interface InventoryDao {

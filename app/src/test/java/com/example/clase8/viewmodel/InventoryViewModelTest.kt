@@ -1,36 +1,18 @@
 package com.example.clase8.viewmodel
 
-import android.app.Application
-import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.clase8.model.Inventory
 import com.example.clase8.model.Product
 import com.example.clase8.repository.InventoryRepository
-import kotlinx.coroutines.CoroutineDispatcher
-
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.TestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.advanceUntilIdle
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
-import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.junit.Assert.*
-
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.TestRule
-import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.Mockito.any
-import org.mockito.Mockito.anyObject
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
@@ -39,12 +21,14 @@ class InventoryViewModelTest {
 
     @get:Rule
     val rule = InstantTaskExecutorRule() //código que involucra LiveData y ViewModel
-    private lateinit var inventoryViewModel: InventoryViewModel
-    private lateinit var inventoryRepository: InventoryRepository
 
+    lateinit var inventoryViewModel: InventoryViewModel
+
+    @Mock
+    lateinit var inventoryRepository: InventoryRepository
     @Before
     fun setUp() {
-        inventoryRepository = mock(InventoryRepository::class.java)
+        MockitoAnnotations.openMocks(this)
         inventoryViewModel = InventoryViewModel(inventoryRepository)
     }
 
